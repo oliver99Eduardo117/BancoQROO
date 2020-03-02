@@ -24,6 +24,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     public VistaCrearCuenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         
        
     }
