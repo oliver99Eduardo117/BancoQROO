@@ -48,7 +48,6 @@ public class registro {
         preresultado.setNombreP(nomP);
         preresultado.setApellidoP(apeP);
         preresultado.setApellidoM(aprM);
-        preresultado.setEdadP(edad);
         db.store(preresultado);
         cerrarRegistro();
                 

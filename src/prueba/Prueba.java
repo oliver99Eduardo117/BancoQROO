@@ -7,13 +7,13 @@ import java.util.Scanner;
  * @author olive
  * @version 1.1
  * fecha 19/02/2020
- */
+ *
 public class Prueba {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
        int cont =0;
         
         Scanner  t = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class Prueba {
 	System.out.println("Ingresa su Apellido Materno");
             p.setApellidoM(t.next());	
 	System.out.println("Ingrese su Edad");
-            p.setEdadP(t.nextInt());   
+          
         
         
             
@@ -77,3 +77,4 @@ public class Prueba {
     }
     
 }
+*/

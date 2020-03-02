@@ -7,14 +7,21 @@
 package Views;
 
 import javax.swing.Action;
+import prueba.persona;
+import prueba.registro;
 
 /**
  *
  * @author olive
  */
 public class VistaCrearCuenta extends javax.swing.JDialog {
-
+    
+    //variable de la contencion de los numeros randon de la terjeta
     int SecionT1, SecionT2, SecionT3;
+    //instancia de la clase persona
+    persona p = new persona();
+    //instancia de la conexion de la conexion ala base de datos
+    registro db = new registro();
    
     
     
@@ -66,7 +73,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         Nip = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        TextFondo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -74,7 +81,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         btnGNT = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        Nip1 = new javax.swing.JPasswordField();
+        CNip = new javax.swing.JPasswordField();
 
         jMenu1.setText("jMenu1");
 
@@ -92,6 +99,11 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         setUndecorated(true);
 
         jButton1.setText("Crear Cuenta");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         TextNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TextNombre.setHighlighter(null);
@@ -216,11 +228,11 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel13.setText("Fondo Inicial");
 
-        jTextField9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField9.setHighlighter(null);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        TextFondo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TextFondo.setHighlighter(null);
+        TextFondo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                TextFondoActionPerformed(evt);
             }
         });
 
@@ -264,10 +276,10 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel16.setText("Confirmar Nip");
 
-        Nip1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Nip1.addActionListener(new java.awt.event.ActionListener() {
+        CNip.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CNip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Nip1ActionPerformed(evt);
+                CNipActionPerformed(evt);
             }
         });
 
@@ -345,7 +357,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(TextFondo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +366,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                                         .addGap(68, 68, 68)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Nip1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(CNip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(667, 667, 667)))
                                 .addGap(10, 10, 10)))))
                 .addGap(0, 8, Short.MAX_VALUE))
@@ -422,7 +434,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
@@ -430,7 +442,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(3, 3, 3)
-                        .addComponent(Nip1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CNip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -449,9 +461,9 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextMesActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void TextFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFondoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_TextFondoActionPerformed
 
     private void NipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NipActionPerformed
         // TODO add your handling code here:
@@ -501,13 +513,39 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
        TextNCliente.setText(Integer.toString(NCliente));
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void Nip1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nip1ActionPerformed
+    private void CNipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CNipActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Nip1ActionPerformed
+    }//GEN-LAST:event_CNipActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-            dispose();
+        //boton para serar la ventana     
+        dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
+        //Boton que Alacenara los campos en la base de datos 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        //almacenamos los datos de los campos en las siguientes varibes 
+        String nnombre = TextNombre.getText();
+        String nApellidoP = TextAPaterno.getText();
+        String nApellidoM = TextAMaterno.getText();
+        int ndia = Integer.parseInt(TextDia.getText());
+        int nmes = Integer.parseInt(TextMes.getText());
+        int naño = Integer.parseInt(TextAño.getText());
+        int ncliente = Integer.parseInt(TextNCliente.getText());
+        int ntarjeta = Integer.parseInt(TextTarjeta.getText());
+        int nnip = Integer.parseInt(Nip.getToolTipText());
+        int fondo = Integer.parseInt(TextFondo.getText());
+        
+        /*Utilizacion de la instancia de la clase persona
+           para la signacion de los balores*/
+        
+        p.setId(ncliente);
+        p.setNombreP(nnombre);
+        p.setApellidoP(nApellidoP);
+        p.setApellidoM(nApellidoM);
+        p.setDia(ndia);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,12 +590,13 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField CNip;
     private javax.swing.JPasswordField Nip;
-    private javax.swing.JPasswordField Nip1;
     private javax.swing.JTextField TextAMaterno;
     private javax.swing.JTextField TextAPaterno;
     private javax.swing.JTextField TextAño;
     private javax.swing.JTextField TextDia;
+    private javax.swing.JTextField TextFondo;
     private javax.swing.JTextField TextMes;
     private javax.swing.JTextField TextNCliente;
     private javax.swing.JTextField TextNombre;
@@ -585,7 +624,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
