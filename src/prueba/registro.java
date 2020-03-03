@@ -3,12 +3,14 @@ package prueba;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.query.Predicate;
+import java.awt.List;
 import static jdk.nashorn.internal.runtime.Debug.id;
 
 public class registro {
     
     private ObjectContainer db = null;
-    private persona I;
+    private Persona I;
     
     private void abrirRegistro()
     {
@@ -20,19 +22,19 @@ public class registro {
         db.close();
     }
     
-    public void insertarRegistro(persona p)
+    public void insertarRegistro(Persona p)
     {
         abrirRegistro();
         db.store(p);
         cerrarRegistro();
     }
     
-    //seleciona a una persona
-    public persona selecionarPersona(persona p)
+    //seleciona a una Persona
+    public Persona selecionarPersona(Persona p)
     {
         abrirRegistro();
         ObjectSet resultado = db.queryByExample(p);
-        persona persona = (persona) resultado.next();
+        Persona persona = (Persona) resultado.next();
         cerrarRegistro();
         return persona;
         
@@ -41,10 +43,10 @@ public class registro {
     public  void actualizacionPersona(int id, String nomP, String apeP, String aprM, int edad)
     {
         abrirRegistro();
-        persona p = new persona();
+        Persona p = new Persona();
         p.setId(id);
         ObjectSet resultado = db.queryByExample(p);
-        persona preresultado = (persona) resultado.next();
+        Persona preresultado = (Persona) resultado.next();
         preresultado.setNombreP(nomP);
         preresultado.setApellidoP(apeP);
         preresultado.setApellidoM(aprM);
@@ -56,12 +58,19 @@ public class registro {
     public void eliminarPersona(int id)
     {
         abrirRegistro();
-        persona p = new persona();
+        Persona p = new Persona();
         p.setId(id);
         ObjectSet resultado = db.queryByExample(p);
-        persona preresultado = (persona) resultado.next();
+        Persona preresultado = (Persona) resultado.next();
         db.delete(preresultado);
         cerrarRegistro();
+    }
+    
+     //Metodo para iniciar secion
+   
+    public void iniciarSecion( String NT, String nip)
+    {
+      
     }
     
 }
