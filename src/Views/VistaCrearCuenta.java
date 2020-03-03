@@ -6,9 +6,12 @@
 
 package Views;
 
+import java.awt.Color;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import prueba.Persona;
+import prueba.Seguridad;
 import prueba.registro;
 
 /**
@@ -23,7 +26,9 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     Persona p = new Persona();
     //instancia de la conexion de la conexion ala base de datos
     registro db = new registro();
-   
+    //instancia de la clase Seguridad
+    Seguridad S = new Seguridad();
+    
     
     
     /**
@@ -67,7 +72,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         TextAño = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         TextTarjeta = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -204,20 +208,11 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 25)); // NOI18N
         jLabel10.setText("Datos Personales");
 
-        jTextField7.setEditable(false);
-        jTextField7.setFont(new java.awt.Font("Venus Rising", 1, 12)); // NOI18N
-        jTextField7.setText("17-59");
-        jTextField7.setHighlighter(null);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel11.setText("Numero de tarjeta");
 
         TextTarjeta.setEditable(false);
+        TextTarjeta.setBackground(new java.awt.Color(204, 204, 204));
         TextTarjeta.setFont(new java.awt.Font("Venus Rising", 1, 12)); // NOI18N
         TextTarjeta.setHighlighter(null);
         TextTarjeta.addActionListener(new java.awt.event.ActionListener() {
@@ -364,20 +359,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jLabel11)
-                        .addGap(618, 618, 618)
-                        .addComponent(jLabel14))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(TextTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(btnGNT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(404, 404, 404)
-                        .addComponent(Texttutor, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
                         .addComponent(jLabel12)
                         .addGap(82, 82, 82)
                         .addComponent(jLabel16))
@@ -397,8 +378,21 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(9, 9, 9))
+                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(TextTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGNT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11))
+                        .addGap(346, 346, 346)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(Texttutor, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,12 +439,12 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGNT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TextTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGNT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(Texttutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -477,7 +471,22 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TexttutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexttutorActionPerformed
-        // TODO add your handling code here:
+        //validar si es menor edad  
+        String anio = TextAño.getText();
+        S.validarEdad(anio);
+        
+        //verifica si la edad es menor de 18 años
+        if(S.getEdad()<= 17)
+        {
+            Texttutor.setEditable(true);
+            JOptionPane.showMessageDialog(null, "Se nesesita un un nombre de tutor por ser menor de edad");
+             Texttutor.setBackground(Color.red);
+        }else
+        {
+            Texttutor.setEditable(false);
+            Texttutor.setBackground(Color.red);
+        }
+     
     }//GEN-LAST:event_TexttutorActionPerformed
 
     private void TextAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextAñoActionPerformed
@@ -504,10 +513,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextNombreActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
     private void TextAPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextAPaternoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextAPaternoActionPerformed
@@ -523,15 +528,17 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     private void btnGNTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGNTActionPerformed
         
        //generar los 12 numeros faltantes de la terjeta
+        int SecionT0 = 1759;
         SecionT1  = (int)(Math.random()*(9999-1000+1)+1000);
         SecionT2 = (int)(Math.random()*(9999-1000+1)+1000);
         SecionT3 = (int)(Math.random()*(9999-1000+1)+1000);
-        TextTarjeta.setText(SecionT1+" - "+SecionT2+" - "+SecionT3);
+        TextTarjeta.setText(SecionT0+" - "+SecionT1+" - "+SecionT2+" - "+SecionT3);
+        
     }//GEN-LAST:event_btnGNTActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int NCliente; //variable que almasena el nuemro de cliente
-        //Gnerar nuemro de cliente
+        //Generar nuemro de cliente
         NCliente = (int)(Math.random()*(9999-1000+1)+1000);
        TextNCliente.setText(Integer.toString(NCliente));
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -608,6 +615,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         if(Nip.getText().length() >=4){
             evt.consume();
         }
+        
     }//GEN-LAST:event_NipKeyTyped
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
@@ -619,7 +627,15 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         
         if(CNip.getText().length() >=4){
             evt.consume();
+            
+        String nip = Nip.getText();
+        String cnip = CNip.getText();
+        S.validarNip(nip, cnip);
+        CNip.setText(null);
+        
         }
+        
+        
     }//GEN-LAST:event_CNipKeyTyped
 
     private void TextDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextDiaKeyTyped
@@ -722,7 +738,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField jTextField7;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
