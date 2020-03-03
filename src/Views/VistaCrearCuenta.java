@@ -7,6 +7,7 @@
 package Views;
 
 import javax.swing.Action;
+import javax.swing.JPasswordField;
 import prueba.persona;
 import prueba.registro;
 
@@ -75,7 +76,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         TextFondo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        Texttutor = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         TextNCliente = new javax.swing.JTextField();
         btnGNT = new javax.swing.JButton();
@@ -239,11 +240,11 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel14.setText("Nombre del Tutor");
 
-        jTextField10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField10.setHighlighter(null);
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        Texttutor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Texttutor.setHighlighter(null);
+        Texttutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                TexttutorActionPerformed(evt);
             }
         });
 
@@ -352,7 +353,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                                             .addComponent(jLabel11))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Texttutor, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel14)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -424,7 +425,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Texttutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -449,9 +450,9 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void TexttutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexttutorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_TexttutorActionPerformed
 
     private void TextAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextAñoActionPerformed
         // TODO add your handling code here:
@@ -524,16 +525,17 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         //Boton que Alacenara los campos en la base de datos 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        //almacenamos los datos de los campos en las siguientes varibes 
+        //Almacenamos los datos de los campos en las siguientes varibes 
         String nnombre = TextNombre.getText();
         String nApellidoP = TextAPaterno.getText();
         String nApellidoM = TextAMaterno.getText();
         int ndia = Integer.parseInt(TextDia.getText());
         int nmes = Integer.parseInt(TextMes.getText());
-        int naño = Integer.parseInt(TextAño.getText());
+        int anio = Integer.parseInt(TextAño.getText());
         int ncliente = Integer.parseInt(TextNCliente.getText());
-        int ntarjeta = Integer.parseInt(TextTarjeta.getText());
-        int nnip = Integer.parseInt(Nip.getToolTipText());
+        String ntarjeta = TextTarjeta.getText();
+        String ntutor = Texttutor.getText();
+        String nnip = Nip.getToolTipText();
         int fondo = Integer.parseInt(TextFondo.getText());
         
         /*Utilizacion de la instancia de la clase persona
@@ -544,6 +546,32 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
         p.setApellidoP(nApellidoP);
         p.setApellidoM(nApellidoM);
         p.setDia(ndia);
+        p.setMes(nmes);
+        p.setAño(anio);
+        p.setNTJ(ntarjeta);
+        p.setTutor(ntutor);
+        p.setNip(nnip);
+        p.setFondoIn(fondo);
+        
+        //Metodo que inserta los valores a la base de datos
+        db.insertarRegistro(p);
+        
+        //Limpiador de los campos
+        
+        TextNombre.setText(null);
+        TextAPaterno.setText(null);
+        TextAMaterno.setText(null);
+        TextDia.setText(null);
+        TextMes.setText(null);
+        TextAño.setText(null);
+        TextNCliente.setText(null);
+        TextTarjeta.setText(null);
+        Nip.setText(null);
+        CNip.setText(null);
+        Texttutor.setText(null);
+        TextFondo.setText(null);
+        
+        System.out.println(db.selecionarPersona(p));
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -601,6 +629,7 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     private javax.swing.JTextField TextNCliente;
     private javax.swing.JTextField TextNombre;
     private javax.swing.JTextField TextTarjeta;
+    private javax.swing.JTextField Texttutor;
     private javax.swing.JButton btnGNT;
     private javax.swing.JButton btnsalir;
     private javax.swing.JButton jButton1;
@@ -622,7 +651,6 @@ public class VistaCrearCuenta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField7;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;

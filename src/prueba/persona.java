@@ -14,8 +14,8 @@ public class persona {
     private int dia;
     private int mes;
     private int año;
-    private int NTJ;
-    private int nip;
+    private String NTJ;
+    private String nip;
     private int FondoIn;
 
     public int getId() {
@@ -82,19 +82,19 @@ public class persona {
         this.año = año;
     }
 
-    public int getNTJ() {
+    public String getNTJ() {
         return NTJ;
     }
 
-    public void setNTJ(int NTJ) {
+    public void setNTJ(String NTJ) {
         this.NTJ = NTJ;
     }
 
-    public int getNip() {
+    public String getNip() {
         return nip;
     }
 
-    public void setNip(int nip) {
+    public void setNip(String nip) {
         this.nip = nip;
     }
 
@@ -119,10 +119,6 @@ public class persona {
                 ", NTJ=" + NTJ + 
                 ", nip=" + nip + 
                 ", FondoIn=" + FondoIn + '}';
-    }
-
-    public void getNombreP(String nnombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
